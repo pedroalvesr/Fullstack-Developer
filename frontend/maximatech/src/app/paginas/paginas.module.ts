@@ -7,11 +7,17 @@ import { FormsModule } from '@angular/forms';
 import { PaginasComponent } from './paginas.component';
 import { PaginasRoutingModule } from './paginas-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.component';
+import { CarrinhoComponent } from './carrinho/carrinho.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
     PaginasComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProdutoDetalheComponent,
+    CarrinhoComponent,
+    PedidosComponent
   ],
   imports: [
     CommonModule,
