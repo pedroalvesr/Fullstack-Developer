@@ -2,11 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './core/layout/top-menu/top-menu.component';
 import { RodapeComponent } from './core/layout/rodape/rodape.component';
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [

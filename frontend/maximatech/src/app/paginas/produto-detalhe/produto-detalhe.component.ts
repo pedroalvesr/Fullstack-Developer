@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { Produto } from './../../core/entity/produto';
 
 @Component({
   selector: 'mxtech-produto-detalhe',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutoDetalheComponent implements OnInit {
 
-  constructor() { }
+  produto: Produto;
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe((params: any) => {
+      
+      this.produto = params;
+
+      console.log(this.produto);
+      
+    });
   }
 
 }

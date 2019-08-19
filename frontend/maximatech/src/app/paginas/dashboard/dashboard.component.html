@@ -1,139 +1,16 @@
 <div class="padding-y-sm">
-    <span>3897 results for "Item"</span>
+    <span><b>sua busca retornou {{ totalProdutos }} iten(s)</b></span>
 </div>
 
 <div class="row-sm">
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
+    <div class="col-md-3 col-sm-6" *ngFor="let p of produtos">
+        <figure class="card card-product" [routerLink]="['/paginas/produto-detalhe', p]">
             <div class="img-wrap"> <img src="../../assets/images/items/no-image-available.png"></div>
             <figcaption class="info-wrap">
-                <a routerLink="/paginas/produto-detalhe" class="title">Good item name</a>
+                <a class="title">{{ p.nome }}</a>
                 <div class="price-wrap">
-                    <span class="price-new">$1280</span>
-                    <del class="price-old">$1980</del>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/2.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/3.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">Good item name</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/4.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">Good item name</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/5.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">Good item name</a>
-                <div class="price-wrap">
-                    <span class="price-new">$1280</span>
-                    <del class="price-old">$1980</del>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/6.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/7.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/1.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/2.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$1280</span>
-                    <del class="price-old">$1980</del>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/3.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/4.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
-                </div> <!-- price-wrap.// -->
-            </figcaption>
-        </figure> <!-- card // -->
-    </div> <!-- col // -->
-    <div class="col-md-3 col-sm-6">
-        <figure class="card card-product">
-            <div class="img-wrap"> <img src="../../assets/images/items/6.jpg"></div>
-            <figcaption class="info-wrap">
-                <a href="#" class="title">The name of product</a>
-                <div class="price-wrap">
-                    <span class="price-new">$280</span>
+                    <span class="price-new"><b>R$ {{ p.precoUnitario | number: '1.2-2' }}</b></span>
+                    <!-- <del class="price-old">$1980</del> -->
                 </div> <!-- price-wrap.// -->
             </figcaption>
         </figure> <!-- card // -->
