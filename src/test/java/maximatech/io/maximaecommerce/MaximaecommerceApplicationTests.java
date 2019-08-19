@@ -1,16 +1,20 @@
 package maximatech.io.maximaecommerce;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import maximaecommerce.service.CalcularFreteService;
 
-@RunWith(SpringRunner.class)
+import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 @SpringBootTest
 public class MaximaecommerceApplicationTests {
 
 	@Test
 	public void contextLoads() {
+	   
+	   CalcularFreteService c = new CalcularFreteService();
+	   System.out.println(c.valorFrete(4));
+	   
 	}
+	
 
 }
