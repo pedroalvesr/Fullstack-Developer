@@ -106,6 +106,8 @@ export class CarrinhoComponent implements OnInit {
     this.pedido.qtdeItens = this.produtos.length;
   
     console.log(this.pedido);
+
+    
     
   }
 }
