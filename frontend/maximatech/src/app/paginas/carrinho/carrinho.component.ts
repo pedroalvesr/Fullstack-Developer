@@ -28,39 +28,21 @@ export class CarrinhoComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Produto) => {
 
       let produto = new Produto();
-
       Object.assign(produto, params);
-
 
       if (produto.codigo != null) {
         this.carrinhoVazio = false;
-        // this.produtos.push(produto);
-
         this.carrinhoService.setItemCarrinho(produto);
         this.precoTotal += parseFloat(produto.precoUnitario.toString());
-        // console.log(this.precoTotal);
       }
     });
-
-
-
-
-    // this.maximatechService.maximatech().subscribe((maxima: any) => {
-    //   maxima.produtos.forEach((item) => {
-    //     let produto = new Produto();
-    //     Object.assign(produto, item);
-    //     this.produtos.push(produto);
-    //   });
-    //   this.calcularTotal(this.produtos.length, this.precoTotal);
-    // });
     this.itensNoCarrinho();
     this.calcularTotal(this.produtos.length, this.precoTotal);
-
   }
 
   public itensNoCarrinho() {
     let itensCarrinho = this.carrinhoService.getItensCarrinho();
-    
+
     if (itensCarrinho.length > 0) {
       this.produtos = itensCarrinho;
       this.carrinhoVazio = false;

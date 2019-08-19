@@ -20,7 +20,7 @@
                                 <td>
                                     <figure class="media">
                                         <div class="img-wrap"><img
-                                                src="../../assets/images/items/no-image-available.png"
+                                                src="{{ produto?.imagem || '../../assets/images/items/no-image-available.png' }}"
                                                 class="img-thumbnail img-sm"></div>
                                         <figcaption class="media-body">
                                             <h6 class="title text-truncate"> {{ produto?.nome }} </h6>

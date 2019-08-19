@@ -18,15 +18,13 @@ export class DashboardComponent implements OnInit {
   constructor(private maximatechService: MaximatechService) { }
 
   ngOnInit() {
-    this.maximatechService.maximatech().subscribe((m: any) => {
-      this.clientes = m.clientes;
-      m.produtos.map(produto => {
+    this.maximatechService.maximatech().subscribe((mxtech: any) => {
+      this.clientes = mxtech.clientes;
+      mxtech.produtos.map(produto => {
         Object.assign(produto, { qtdeItem: 1 });
       })
-      this.produtos = m.produtos;
-      this.totalProdutos = m.produtos.length;
-      // console.log(this.clientes);
-      console.log(this.produtos);
+      this.produtos = mxtech.produtos;
+      this.totalProdutos = mxtech.produtos.length;
     });
   }
 

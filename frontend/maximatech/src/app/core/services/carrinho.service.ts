@@ -7,7 +7,6 @@ import { Produto } from './../entity/produto';
 })
 export class CarrinhoService {
 
-  emitirCarrinho: EventEmitter<Produto[]> = new EventEmitter<Produto[]>();
   itensCarrinho: Produto[] = [];
   carrinhoVazio: boolean = true;  
   precoTotal = 0;
@@ -23,12 +22,11 @@ export class CarrinhoService {
     return this.itensCarrinho;
   }
 
+  // TODO 
+  // Analisar a possibilidade de gerenciar as ações pelo service
   public removerItemCarrinho(item) {
-    console.log(this.itensCarrinho.indexOf(item));
-    
     this.itensCarrinho.slice(this.itensCarrinho.indexOf(item), 1);
-    console.log(this.itensCarrinho);
-    this.isCarrinhoVazio();
+    this.carrinhoEstaVazio();
     this.calcularTotalPosRemoverItem();
   }
 
@@ -40,7 +38,7 @@ export class CarrinhoService {
     this.frete = this.frete;
   }
 
-  private isCarrinhoVazio() {
+  private carrinhoEstaVazio() {
     if (this.itensCarrinho.length < 1) {
       this.carrinhoVazio = true;
     }
