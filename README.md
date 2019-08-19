@@ -124,7 +124,7 @@ spring.datasource.password=postgres
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.generate-ddl=true
 ```
-Em `src/main/java ` abra o pacote `maximaecommerce` e execulte conforme imagem abaixo:
+Em `src/main/java ` abra o pacote `maximaecommerce` e execute conforme imagem abaixo:
  
 ![Captura de Tela 2019-08-19 às 15 33 38](https://user-images.githubusercontent.com/22817118/63290567-0b2fa480-c298-11e9-943e-613ec5428568.png)
 
