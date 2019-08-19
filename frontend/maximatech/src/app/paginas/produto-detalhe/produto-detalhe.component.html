@@ -82,17 +82,17 @@
                                         <dl class="dlist-inline">
                                             <dt>Quatidade: </dt>
                                             <dd>
-                                                <select class="form-control form-control-sm" style="width:70px;">
-                                                    <option> 1 </option>
-                                                    <option> 2 </option>
-                                                    <option> 3 </option>
+                                                <select class="form-control form-control-sm" style="width:70px;" [(ngModel)]="produto.qtdeItem" >
+                                                    <option value="1"> 1 </option>
+                                                    <option value="2"> 2 </option>
+                                                    <option value="3"> 3 </option>
                                                 </select>
                                             </dd>
                                         </dl> <!-- item-property .// -->
                                     </div> <!-- col.// -->
                                 </div> <!-- row.// -->
                                 <hr>
-                                <a [routerLink]="['/paginas/meu-carrinho', {codigo: produto.codigo, nome: produto.nome, precoUnitario: produto.precoUnitario, qtdeItem: 1 }]" style="width: 80%;" class="btn  btn-outline-warning offset-1"> COMPRAR </a>
+                                <a [routerLink]="['/paginas/meu-carrinho', produto]" style="width: 80%;" class="btn  btn-outline-warning offset-1"> COMPRAR </a>
                                 <!-- short-info-wrap .// -->
                             </article> <!-- card-body.// -->
                         </aside> <!-- col.// -->

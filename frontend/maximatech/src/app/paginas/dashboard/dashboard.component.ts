@@ -12,7 +12,7 @@ import { Produto } from './../../core/entity/produto';
 export class DashboardComponent implements OnInit {
 
   clientes: Cliente;
-  produtos: Produto
+  produtos: Produto[] = [];
   totalProdutos: number;
 
   constructor(private maximatechService: MaximatechService) { }
@@ -20,11 +20,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.maximatechService.maximatech().subscribe((m: any) => {
       this.clientes = m.clientes;
+      m.produtos.map(produto => {
+        Object.assign(produto, { qtdeItem: 1 });
+      })
       this.produtos = m.produtos;
       this.totalProdutos = m.produtos.length;
-      console.log(this.clientes);
+      // console.log(this.clientes);
       console.log(this.produtos);
-      
     });
   }
 

@@ -12,15 +12,13 @@ export class ProdutoDetalheComponent implements OnInit {
 
   produto: Produto;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) { 
+    this.produto = new Produto();
+  }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params: any) => {
-      
-      this.produto = params;
-
-      console.log(this.produto);
-      
+    this.activatedRoute.params.subscribe((params: Produto) => {
+      Object.assign(this.produto, params); 
     });
   }
 
