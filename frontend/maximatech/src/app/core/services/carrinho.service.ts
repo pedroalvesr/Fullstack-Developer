@@ -7,6 +7,7 @@ import { Produto } from './../entity/produto';
 })
 export class CarrinhoService {
 
+  emitirItensCarrinho: EventEmitter<Produto[]> = new EventEmitter<Produto[]>();
   itensCarrinho: Produto[] = [];
   carrinhoVazio: boolean = true;  
   precoTotal = 0;
@@ -16,9 +17,11 @@ export class CarrinhoService {
 
   public setItemCarrinho(item) {
     this.itensCarrinho.push(item);
+    this.emitirItensCarrinho.emit(this.itensCarrinho);
   }
 
   public getItensCarrinho() {
+    this.emitirItensCarrinho.emit(this.itensCarrinho);
     return this.itensCarrinho;
   }
 

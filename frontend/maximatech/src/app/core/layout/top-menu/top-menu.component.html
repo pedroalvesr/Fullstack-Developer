@@ -103,6 +103,7 @@
                             <a routerLink="/paginas/meu-carrinho" class="widget-header">
                                 <div class="icontext">
                                     <div class="icon-wrap"><i class="text-warning icon-sm fa fa-shopping-cart"></i>
+                                        <span class="notify" *ngIf="qtdeitensCarrinho" >{{ qtdeitensCarrinho }}</span>
                                     </div>
                                     <div class="text-wrap text-dark">
                                         Meus Pedidos

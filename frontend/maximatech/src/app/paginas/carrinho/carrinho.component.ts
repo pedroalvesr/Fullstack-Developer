@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { MaximatechService } from './../../core/services/maximatech.service';
 import { Produto } from './../../core/entity/produto';
+import { Cliente } from './../../core/entity/cliente';
+import { Pedido } from './../../core/entity/pedido'; 
 import { CalcularFreteService } from './../../core/services/calcular-frete.service';
 import { CarrinhoService } from './../../core/services/carrinho.service';
 
@@ -14,6 +16,9 @@ import { CarrinhoService } from './../../core/services/carrinho.service';
 export class CarrinhoComponent implements OnInit {
 
   produtos: Produto[] = [];
+  clientes: Cliente[] = [];
+  pedido: Pedido;
+  cliente: Cliente;
   carrinhoVazio: boolean = true;
   frete: number = 0;
   precoTotal: number = 0;
@@ -38,6 +43,7 @@ export class CarrinhoComponent implements OnInit {
     });
     this.itensNoCarrinho();
     this.calcularTotal(this.produtos.length, this.precoTotal);
+    this.maximaTechClientes();
   }
 
   public itensNoCarrinho() {
@@ -63,7 +69,8 @@ export class CarrinhoComponent implements OnInit {
     this.produtos.splice(this.produtos.indexOf(item), 1);
     this.calcularTotalPosRemoverItem();
     this.carrinhoEstaVazio();
-
+    this.carrinhoService.emitirItensCarrinho.emit(this.produtos);
+    
     // this.carrinhoService.removerItemCarrinho(item);
     // this.itensNoCarrinho();
   }
@@ -80,5 +87,25 @@ export class CarrinhoComponent implements OnInit {
     if (this.produtos.length < 1) {
       this.carrinhoVazio = true;
     }
+  }
+
+  public maximaTechClientes() {
+    this.maximatechService.maximatech().subscribe((mxtech: any) => {
+      this.clientes = mxtech.clientes;
+      this.cliente = this.clientes[0];
+      // console.log(this.clientes);
+      
+    });
+  }
+
+  public salvarPedido() {
+    this.pedido = new Pedido();
+    this.pedido.cliente = this.cliente;
+    this.pedido.valorTotal = this.precoTotal;
+    this.pedido.valorFrete = this.frete;
+    this.pedido.qtdeItens = this.produtos.length;
+  
+    console.log(this.pedido);
+    
   }
 }

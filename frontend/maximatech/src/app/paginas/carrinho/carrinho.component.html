@@ -1,18 +1,24 @@
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content bg padding-y border-top">
     <div class="container">
-
+        <div class="form-row" *ngIf="!carrinhoVazio">
+            <div class="form-group col-sm-9">
+                <label>Cliente</label>
+                <select class="form-control" [(ngModel)]="cliente">
+                    <option *ngFor="let cliente of clientes" [(ngValue)]="cliente"> {{ cliente?.nome }} </option>
+                </select>
+            </div> <!-- form-group end.// -->
+        </div>
         <div class="row" *ngIf="!carrinhoVazio">
             <main class="col-sm-9">
-
                 <div class="card">
                     <table class="table table-hover shopping-cart-wrap">
                         <thead class="text-muted">
                             <tr>
                                 <th scope="col">Produto(s)</th>
-                                <th scope="col" width="120">Quatidade</th>
-                                <th scope="col" width="120">Preço</th>
-                                <th scope="col" class="text-right" width="200">Ações</th>
+                                <th scope="col">Quatidade</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col" class="text-right">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,7 +42,8 @@
                                     </figure>
                                 </td>
                                 <td>
-                                    <select class="form-control" [(ngModel)]="produto.qtdeItem" (change)="calcularTotal(produto.qtdeItem, produto.precoUnitario)" >
+                                    <select class="form-control" [(ngModel)]="produto.qtdeItem"
+                                        (change)="calcularTotal(produto.qtdeItem, produto.precoUnitario)">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
@@ -97,7 +104,7 @@
                     </div>
                 </figure>
                 <br>
-                <a href="#" style="width: 80%;" class="btn  btn-outline-warning offset-1"> COMPRAR </a>
+                <a style="width: 80%;" class="btn  btn-outline-warning offset-1" (click)="salvarPedido()"> COMPRAR </a>
 
             </aside> <!-- col.// -->
         </div>

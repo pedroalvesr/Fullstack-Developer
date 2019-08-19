@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CarrinhoService } from './../../services/carrinho.service';
+
 @Component({
   selector: 'mxtech-top-menu',
   templateUrl: './top-menu.component.html',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopMenuComponent implements OnInit {
 
-  constructor() { }
+  qtdeitensCarrinho: number;
+
+  constructor(private carrinhoService: CarrinhoService) { }
 
   ngOnInit() {
+    this.carrinhoService.emitirItensCarrinho.subscribe((item) => {
+      this.qtdeitensCarrinho = item.length;
+    });
+
   }
 
 }
