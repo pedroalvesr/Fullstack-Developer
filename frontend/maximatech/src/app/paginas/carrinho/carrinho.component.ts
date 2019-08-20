@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { MaximatechService } from './../../core/services/maximatech.service';
 import { Produto } from './../../core/entity/produto';
 import { Cliente } from './../../core/entity/cliente';
-import { Pedido } from './../../core/entity/pedido'; 
+import { Pedido } from './../../core/entity/pedido';
 import { CalcularFreteService } from './../../core/services/calcular-frete.service';
 import { CarrinhoService } from './../../core/services/carrinho.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'mxtech-carrinho',
@@ -27,7 +29,8 @@ export class CarrinhoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private calcularFreteService: CalcularFreteService,
     private maximatechService: MaximatechService,
-    private carrinhoService: CarrinhoService) { }
+    private carrinhoService: CarrinhoService,
+    private route: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Produto) => {
@@ -70,7 +73,7 @@ export class CarrinhoComponent implements OnInit {
     this.calcularTotalPosRemoverItem();
     this.carrinhoEstaVazio();
     this.carrinhoService.emitirItensCarrinho.emit(this.produtos);
-    
+
     // this.carrinhoService.removerItemCarrinho(item);
     // this.itensNoCarrinho();
   }
@@ -94,7 +97,7 @@ export class CarrinhoComponent implements OnInit {
       this.clientes = mxtech.clientes;
       this.cliente = this.clientes[0];
       // console.log(this.clientes);
-      
+
     });
   }
 
@@ -103,11 +106,55 @@ export class CarrinhoComponent implements OnInit {
     this.pedido.cliente = this.cliente;
     this.pedido.valorTotal = this.precoTotal;
     this.pedido.valorFrete = this.frete;
-    this.pedido.qtdeItens = this.produtos.length;
-  
-    console.log(this.pedido);
+    this.pedido.qtdeItens = 0;
+    this.produtos.forEach((item) => {
+      this.pedido.qtdeItens += parseFloat(item.qtdeItem.toString());
+    });
 
-    
-    
+
+    this.carrinhoService.salvarPedido(this.pedido).subscribe(() => {
+      this.swalSuccess();
+    },
+      error => {
+        this.swalError();
+      });
+  }
+
+  private swalSuccess() {
+    Swal.fire({
+      title: 'Seu pedido foi salvo com sucesso!',
+      text: "Você quer ver a lista de pedidos?",
+      width: 500,
+      type: 'success',
+      showCancelButton: true,
+      confirmButtonColor: '#4EB053',
+      cancelButtonColor: '#E72688',
+      confirmButtonText: 'Sim, eu quero!',
+      cancelButtonText: 'Não, agora não!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.produtos = [];
+        this.precoTotal = 0;
+        this.frete = 0;
+        this.carrinhoService.limparCarrinho();
+        this.route.navigate(['/paginas/pedidos']);
+      } else {
+        this.produtos = [];
+        this.precoTotal = 0;
+        this.frete = 0;
+        this.carrinhoService.limparCarrinho();
+        this.route.navigate(['/']);
+      }
+    });
+  }
+
+  private swalError() {
+    Swal.fire({
+      title: 'Oops...',
+      text: "Aconteceu algo de errado, tente novamente!",
+      type: 'error',
+      confirmButtonColor: '#E72688',
+    })
   }
 }

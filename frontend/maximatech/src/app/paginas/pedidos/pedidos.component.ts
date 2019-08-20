@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Pedido } from './../../core/entity/pedido';
+import { PedidoService } from './../../core/services/pedido.service';
+
 @Component({
   selector: 'mxtech-pedidos',
   templateUrl: './pedidos.component.html',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PedidosComponent implements OnInit {
 
-  constructor() { }
+  pedidos: Pedido[] = [];
+
+  constructor(private pedidoService: PedidoService) { }
 
   ngOnInit() {
+    this.pedidoService.buscarProdutos().subscribe((pedido: Pedido[]) => {
+      console.log(pedido);
+      
+      this.pedidos = pedido;
+    });
   }
 
 }

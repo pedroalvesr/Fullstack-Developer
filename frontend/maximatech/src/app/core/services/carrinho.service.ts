@@ -1,19 +1,23 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { take } from 'rxjs/operators';
 
 import { Produto } from './../entity/produto';
+import { Constants } from './../constants/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarrinhoService {
 
+  HOME_API = Constants.HOME_API;
   emitirItensCarrinho: EventEmitter<Produto[]> = new EventEmitter<Produto[]>();
   itensCarrinho: Produto[] = [];
   carrinhoVazio: boolean = true;  
   precoTotal = 0;
   frete: number = 0;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   public setItemCarrinho(item) {
     this.itensCarrinho.push(item);
@@ -23,6 +27,16 @@ export class CarrinhoService {
   public getItensCarrinho() {
     this.emitirItensCarrinho.emit(this.itensCarrinho);
     return this.itensCarrinho;
+  }
+
+  public salvarPedido(pedido) {
+    return this.http.post(`${this.HOME_API}/pedido`, pedido).pipe(take(1));
+
+  }
+
+  public limparCarrinho() {
+    this.itensCarrinho = [];
+    this.emitirItensCarrinho.emit(this.itensCarrinho);
   }
 
   // TODO 

@@ -12,58 +12,15 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Valor Total</th>
                                 <th scope="col">Quant. de itens</th>
-                                <th scope="col" class="text-right">Valor do frete</th>
+                                <th scope="col">Valor do frete</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let produto of produtos">
-                                <td>
-                                    <figure class="media">
-                                        <div class="img-wrap"><img
-                                                src="{{ produto?.imagem || '../../assets/images/items/no-image-available.png' }}"
-                                                class="img-thumbnail img-sm"></div>
-                                        <figcaption class="media-body">
-                                            <h6 class="title text-truncate"> {{ produto?.nome }} </h6>
-                                            <dl class="dlist-inline small">
-                                                <dt>Código: </dt>
-                                                <dd> {{ produto?.codigo }} </dd>
-                                            </dl>
-                                            <dl class="dlist-inline small">
-                                                <dt>Cor: </dt>
-                                                <dd> {{ produto?.cor ? produto?.cor : 'Não informado' }} </dd>
-                                            </dl>
-                                        </figcaption>
-                                    </figure>
-                                </td>
-                                <td>
-                                    <select class="form-control" [(ngModel)]="produto.qtdeItem"
-                                        (change)="calcularTotal(produto.qtdeItem, produto.precoUnitario)">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <div class="price-wrap">
-                                        <var class="price">R$ {{ produto?.precoUnitario | number: '1.2-2' }} </var>
-                                        <!-- <small class="text-muted">(USD5 each)</small> -->
-                                    </div> <!-- price-wrap .// -->
-                                </td>
-                                <td class="text-right">
-                                    <!-- <a data-original-title="Save to Wishlist" title="" href=""
-                                            class="btn btn-outline-success" data-toggle="tooltip"> <i
-                                                class="fa fa-heart"></i></a> -->
-                                    <a class="btn btn-outline-danger" (click)="removerItem(produto)"> × Remover</a>
-                                </td>
-                            </tr>
-                            <tr class="odd" *ngIf="produtos < 1">
-                                <td valign="top" colspan="24" class="dataTables_empty" style="text-align: center">
-                                    Seu carrinho está vazio <a routerLink="/"><b>Continuar Comprando</b></a></td>
-
-
-                            </tr>
+                            <tr *ngFor="let pedido of pedidos">
+                                <td> {{ pedido.id }} </td>
+                                <td>R$ {{ pedido.valorTotal | number: '1.2-2' }} </td>
+                                <td> {{ pedido.qtdeItens }} </td>
+                                <td> {{ pedido.valorFrete | number: '1.2-2' }} </td>
                         </tbody>
                     </table>
                 </div> <!-- card.// -->

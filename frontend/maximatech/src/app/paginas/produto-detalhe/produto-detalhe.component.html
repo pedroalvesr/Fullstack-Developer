@@ -36,7 +36,7 @@
                                 <h3 class="title mb-3"> {{ produto.nome }} </h3>
 
                                 <div class="mb-3">
-                                    <var class="price h3 text-warning">
+                                    <var class="price h3 text-success">
                                         <span class="currency">R$ </span><span class="num">
                                             {{ produto.precoUnitario | number: '1.2-2' }} </span>
                                     </var>
@@ -92,7 +92,7 @@
                                     </div> <!-- col.// -->
                                 </div> <!-- row.// -->
                                 <hr>
-                                <a [routerLink]="['/paginas/meu-carrinho', produto]" style="width: 80%;" class="btn  btn-outline-warning offset-1"> COMPRAR </a>
+                                <a [routerLink]="['/paginas/meu-carrinho', produto]" style="width: 80%;" class="btn  btn-outline-success offset-1"> COMPRAR </a>
                                 <!-- short-info-wrap .// -->
                             </article> <!-- card-body.// -->
                         </aside> <!-- col.// -->

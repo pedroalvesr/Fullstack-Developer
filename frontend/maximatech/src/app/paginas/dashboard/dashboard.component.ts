@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MaximatechService } from './../../core/services/maximatech.service';
 import { Cliente } from './../../core/entity/cliente';
 import { Produto } from './../../core/entity/produto';
+import { TopMenuService } from './../../core/services/top-menu.service';
 
 @Component({
   selector: 'mxtech-dashboard',
@@ -14,8 +15,12 @@ export class DashboardComponent implements OnInit {
   clientes: Cliente;
   produtos: Produto[] = [];
   totalProdutos: number;
+  filtro: string;
+  itensFiltrados: [] = [];
 
-  constructor(private maximatechService: MaximatechService) { }
+  constructor(
+    private maximatechService: MaximatechService,
+    private topMenuService: TopMenuService) { }
 
   ngOnInit() {
     this.maximatechService.maximatech().subscribe((mxtech: any) => {
@@ -26,6 +31,19 @@ export class DashboardComponent implements OnInit {
       this.produtos = mxtech.produtos;
       this.totalProdutos = mxtech.produtos.length;
     });
+
+    this.topMenuService.emittFilter.subscribe((filtro) => {
+      console.log(filtro);
+
+      this.filtro = filtro;
+    });
+
   }
 
+  public filtros(parametro) {
+    return this.produtos.filter(filtro => {
+      filtro == parametro
+       console.log(filtro);
+    });
+  }
 }

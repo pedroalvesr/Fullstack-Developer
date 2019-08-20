@@ -40,12 +40,12 @@
                         <button type="button" class="btn btn-light  dropdown-toggle" data-toggle="dropdown"><i
                                 class="fa fa-bars"></i> Categorias</button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
-                            <a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
-                            <a class="dropdown-item" href="#">Auto / Transportation</a>
-                            <a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
-                            <a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
-                            <a class="dropdown-item" href="#">Beauty & Personal Care / Health </a>
+                            <a class="dropdown-item" href="javascript:;">Máquinas / Peças Mecânicas / Ferramentas </a>
+                            <a class="dropdown-item" href="javascript:;">Eletrônicos de Consumo / Eletrodomésticos </a>
+                            <a class="dropdown-item" href="javascript:;">Auto / Transporte</a>
+                            <a class="dropdown-item" href="javascript:;">Vestuário / Têxtil / Relógios </a>
+                            <a class="dropdown-item" href="javascript:;">Casa e Jardim / Construção / Luzes </a>
+                            <a class="dropdown-item" href="javascript:;">Beleza e cuidados pessoais / Saúde </a>
                         </div>
                     </div>
                 </div>
@@ -58,9 +58,9 @@
                                 <option value="">Melhores Ofertas</option>
                                 <option value="">Recomendados</option>
                             </select>
-                            <input type="text" class="form-control" style="width:30%;" placeholder="Pesquisar">
+                            <input type="text" class="form-control" style="width:30%;"  [(ngModel)]="filtro"  [ngModelOptions]="{standalone: true}" (change)="emitirFiltro()" placeholder="Pesquisar">
                             <div class="input-group-append">
-                                <button class="btn btn-warning" type="submit">
+                                <button class="btn btn-success" type="submit">
                                     <i class="fa fa-search"></i> Pesquisar
                                 </button>
                             </div>
@@ -102,7 +102,7 @@
                         <div class="col-auto">
                             <a routerLink="/paginas/meu-carrinho" class="widget-header">
                                 <div class="icontext">
-                                    <div class="icon-wrap"><i class="text-warning icon-sm fa fa-shopping-cart"></i>
+                                    <div class="icon-wrap"><i class="text-success icon-sm fa fa-shopping-cart"></i>
                                         <span class="notify" *ngIf="qtdeitensCarrinho" >{{ qtdeitensCarrinho }}</span>
                                     </div>
                                     <div class="text-wrap text-dark">
