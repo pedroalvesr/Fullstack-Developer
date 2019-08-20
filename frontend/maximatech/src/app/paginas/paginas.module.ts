@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProdutoDetalheComponent } from './produto-detalhe/produto-detalhe.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { FilterPipe } from '../core/pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PedidosComponent } from './pedidos/pedidos.component';
     DashboardComponent,
     ProdutoDetalheComponent,
     CarrinhoComponent,
-    PedidosComponent
+    PedidosComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,
