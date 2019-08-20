@@ -60,7 +60,7 @@
                             </select>
                             <input type="text" class="form-control" style="width:30%;"  [(ngModel)]="filtro"  [ngModelOptions]="{standalone: true}" (change)="emitirFiltro()" placeholder="Pesquisar">
                             <div class="input-group-append">
-                                <button class="btn btn-success" type="submit">
+                                <button class="btn btn-success" type="submit" (click)="emitirFiltro()">
                                     <i class="fa fa-search"></i> Pesquisar
                                 </button>
                             </div>

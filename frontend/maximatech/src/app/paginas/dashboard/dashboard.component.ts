@@ -33,17 +33,8 @@ export class DashboardComponent implements OnInit {
     });
 
     this.topMenuService.emittFilter.subscribe((filtro) => {
-      console.log(filtro);
-
-      this.filtro = filtro;
+       this.filtro = filtro;
     });
-
-  }
-
-  public filtros(parametro) {
-    return this.produtos.filter(filtro => {
-      filtro == parametro
-       console.log(filtro);
-    });
+    
   }
 }

@@ -3,7 +3,7 @@
 </div>
 
 <div class="row-sm">
-    <div class="col-md-3 col-sm-6" *ngFor="let produto of produtos">
+    <div class="col-md-3 col-sm-6" *ngFor="let produto of (produtos | filter: 'nome': filtro)">
         <figure class="card card-product" [routerLink]="['/paginas/produto-detalhe', produto]">
             <div class="img-wrap"> <img src="{{ produto?.imagem || '../../assets/images/items/no-image-available.png' }}"></div>
             <figcaption class="info-wrap">
