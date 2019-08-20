@@ -1,5 +1,8 @@
 # Fullstack-Developer
+
 Avaliação Técnica para Recrutamento e Seleção - Fullstack
+
+![gyphy-maximatech-ecommerce-dashboard](https://user-images.githubusercontent.com/22817118/63343364-26e08c80-c324-11e9-83d9-df50e53c79ca.gif)
 
 ### Configuração da Aplicação
 
@@ -99,7 +102,8 @@ Usando sua IDE de preferência abra a pasta `maximatech` que está dentro de `/f
 
 se tudo der certo, deve aparecer algo parecido com isso:
 
-![gyphy-maximatech-ecommerce-dashboard](https://user-images.githubusercontent.com/22817118/63288616-8478c880-c293-11e9-98d4-cc35d115a6ce.gif)
+![gyphy-maximatech-ecommerce-localhost](https://user-images.githubusercontent.com/22817118/63343661-e6cdd980-c324-11e9-876a-a4c19127e539.gif)
+
 
 ### back-end
 
